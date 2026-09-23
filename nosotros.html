@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosotros — Alia Beauty SAS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F5F6;
+    --ink: #000D49;
+    --ink-soft: #4A618D;
+    --wine: #4A618D;
+    --sage: #7F92B3;
+    --nude: #BCC0CF;
+    --line: #BCC0CF;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Karla', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .wordmark{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  /* ---------- Header ---------- */
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 1.6rem clamp(1.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .wordmark{
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .wordmark span{ color: var(--wine); }
+
+  nav{
+    display:flex;
+    gap: clamp(1rem, 3vw, 2.4rem);
+  }
+
+  nav a{
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color .2s ease;
+  }
+
+  nav a:hover, nav a:focus-visible{ color: var(--wine); }
+
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0;
+    height:1px;
+    background: var(--wine);
+    transition: width .25s ease;
+  }
+
+  nav a:hover::after, nav a:focus-visible::after{ width:100%; }
+
+  nav a.active{ color: var(--ink); }
+
+  nav a.active::after{ width:100%; background: var(--ink); }
+
+  /* ---------- Intro ---------- */
+
+  .intro{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 5vw, 3rem);
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .intro .eyebrow{
+    color: var(--sage);
+    font-size: 0.85rem;
+    margin: 0 0 0.8rem;
+  }
+
+  .intro h1{
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    max-width: 12ch;
+  }
+
+  .intro .lede{
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 56ch;
+  }
+
+  .intro .lede + .lede{ margin-top: 1rem; }
+
+  /* ---------- Lema ---------- */
+
+  .lema{
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(2.4rem, 6vw, 3.6rem) clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .lema blockquote{
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .lema cite{
+    display:block;
+    margin-top: 0.8rem;
+    font-family: 'Karla', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--sage);
+  }
+
+  /* ---------- Equipo ---------- */
+
+  .team{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .team h2{
+    font-size: 1.6rem;
+    max-width: 22ch;
+    margin-bottom: 2.2rem;
+  }
+
+  .team-list{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .team-list li{
+    list-style:none;
+    padding: 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .team-list li:nth-child(odd){ border-right: 1px solid var(--line); }
+
+  .team-list li:nth-child(-n+2){ border-top: none; }
+
+  .team-list h3{
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  .team-list p{
+    margin: 0.35rem 0 0;
+    color: var(--sage);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    padding: clamp(2.4rem, 6vw, 3.6rem) clamp(1.5rem, 5vw, 4rem) 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  footer h3{
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  footer p, footer address{
+    font-style: normal;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin: 0.25rem 0;
+  }
+
+  .footer-base{
+    text-align:center;
+    padding: 1.2rem 1.5rem 2rem;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 780px){
+    .intro{ grid-template-columns: 1fr; }
+    .team-list{ grid-template-columns: 1fr; }
+    .team-list li{ border-right:none !important; }
+    .team-list li:nth-child(-n+2){ border-top: 1px solid var(--line); }
+    .team-list li:first-child{ border-top: none; }
+    footer{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="wordmark">alia<span>.</span>beauty</a>
+    <nav>
+      <a href="inicio.html">Inicio</a>
+      <a href="nosotros.html" class="active">Nosotros</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <div>
+      <p class="eyebrow">Nosotros</p>
+      <h1>¿Quiénes somos?</h1>
+    </div>
+    <div>
+      <p class="lede">Alia Beauty es una marca colombiana especializada en la selección y comercialización de cremas corporales, geles de baño y splash para mujer.</p>
+      <p class="lede">Trabajamos con proveedores de confianza para ofrecerte productos modernos, de excelente calidad y a buen precio, inspirados en el cuidado y bienestar personal para quienes buscan expresar su personalidad.</p>
+    </div>
+  </section>
+
+  <section class="lema">
+    <blockquote>
+      “Tu piel, nuestra pasión”
+      <cite>Lema de Alia Beauty SAS</cite>
+    </blockquote>
+  </section>
+
+  <section class="team">
+    <h2>El equipo detrás de Alia Beauty</h2>
+    <ul class="team-list">
+      <li>
+        <h3>Laura Álvarez Poveda</h3>
+        <p>Representante legal</p>
+      </li>
+      <li>
+        <h3>Danna Valentina Tello Peña</h3>
+        <p>Gerente general</p>
+      </li>
+      <li>
+        <h3>Allison Dayann Linares Romero</h3>
+        <p>Directora Comercial y de Marketing</p>
+      </li>
+      <li>
+        <h3>Sebastián Blanco Ortiz</h3>
+        <p>Director Financiero y Administrativo</p>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <div>
+      <h3>Alia Beauty SAS</h3>
+      <p>Comercio de productos cosméticos para el cuidado de la piel.</p>
+    </div>
+    <div>
+      <h3>Contacto</h3>
+      <address>
+        <p>aliabeauty70@gmail.com</p>
+        <p>47A sur 31-86, Bogotá D.C.</p>
+      </address>
+    </div>
+    <div>
+      <h3>Horario de atención</h3>
+      <p>Lunes a Viernes</p>
+      <p>8:00 a.m. – 6:00 p.m.</p>
+    </div>
+  </footer>
+
+  <p class="footer-base">© 2026 Alia Beauty SAS. Proyecto académico.</p>
+
+</body>
+</html>

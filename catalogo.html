@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo — Alia Beauty SAS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F5F6;
+    --ink: #000D49;
+    --ink-soft: #4A618D;
+    --wine: #4A618D;
+    --sage: #7F92B3;
+    --nude: #BCC0CF;
+    --line: #BCC0CF;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Karla', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .wordmark{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width: 100%; display:block; }
+
+  /* ---------- Header ---------- */
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 1.6rem clamp(1.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .wordmark{
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .wordmark span{ color: var(--wine); }
+
+  nav{
+    display:flex;
+    gap: clamp(1rem, 3vw, 2.4rem);
+  }
+
+  nav a{
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color .2s ease;
+  }
+
+  nav a:hover, nav a:focus-visible{ color: var(--wine); }
+
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0;
+    height:1px;
+    background: var(--wine);
+    transition: width .25s ease;
+  }
+
+  nav a:hover::after, nav a:focus-visible::after{ width:100%; }
+
+  nav a.active{ color: var(--ink); }
+
+  nav a.active::after{ width:100%; background: var(--ink); }
+
+  /* ---------- Intro ---------- */
+
+  .intro{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .intro .eyebrow{
+    color: var(--sage);
+    font-size: 0.85rem;
+    margin: 0 0 0.8rem;
+  }
+
+  .intro h1{
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    max-width: 16ch;
+  }
+
+  .intro .lede{
+    margin-top: 1rem;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 56ch;
+  }
+
+  /* ---------- Categorías de producto ---------- */
+
+  .category{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--line);
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .category:last-of-type{ border-bottom: 1px solid var(--line); }
+
+  .category figure{
+    margin:0;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+
+  .category .info h2{
+    font-size: 1.5rem;
+  }
+
+  .category .info .desc{
+    margin-top: 0.6rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 40ch;
+  }
+
+  .prices{
+    margin-top: 1.4rem;
+    display:flex;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+  }
+
+  .price-block .label{
+    font-size: 0.78rem;
+    color: var(--sage);
+  }
+
+  .price-block .amount{
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-top: 0.2rem;
+  }
+
+  /* ---------- Combo ---------- */
+
+  .combo{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(2.4rem, 6vw, 3.6rem) clamp(1.5rem, 5vw, 4rem);
+    display:grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items:center;
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .combo figure{
+    margin:0;
+    background:#fff;
+    border-radius: 4px;
+    overflow:hidden;
+  }
+
+  .combo .eyebrow{
+    color: var(--nude);
+    font-size: 0.85rem;
+    margin: 0 0 0.6rem;
+  }
+
+  .combo h2{
+    color:#fff;
+    font-size: 1.8rem;
+  }
+
+  .combo .desc{
+    margin-top: 0.8rem;
+    color: var(--nude);
+    font-size: 0.95rem;
+    max-width: 40ch;
+  }
+
+  .combo .prices .label{ color: var(--nude); }
+
+  .combo .price-block .amount{ color: #fff; }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    padding: clamp(2.4rem, 6vw, 3.6rem) clamp(1.5rem, 5vw, 4rem) 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  footer h3{
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  footer p, footer address{
+    font-style: normal;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin: 0.25rem 0;
+  }
+
+  .footer-base{
+    text-align:center;
+    padding: 1.2rem 1.5rem 2rem;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 780px){
+    .category{ grid-template-columns: 1fr; }
+    .combo{ grid-template-columns: 1fr; }
+    footer{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="wordmark">alia<span>.</span>beauty</a>
+    <nav>
+      <a href="inicio.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="catalogo.html" class="active">Catálogo</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <p class="eyebrow">Catálogo</p>
+    <h1>Nuestros productos</h1>
+    <p class="lede">Tres líneas pensadas para el cuidado diario de la piel, disponibles por unidad o al por mayor.</p>
+  </section>
+
+  <section class="category">
+    <figure>
+      <img src="img/mantequilla-corporal.png" alt="Mantequilla corporal Alia Beauty en los aromas Girl Boss, Piña Colada y Candy Bum">
+    </figure>
+    <div class="info">
+      <h2>Mantequilla corporal</h2>
+      <p class="desc">Hidratación profunda para dejar la piel suave y nutrida. Disponible en Girl Boss, Piña Colada y Candy Bum.</p>
+      <div class="prices">
+        <div class="price-block">
+          <p class="label">Unidad</p>
+          <p class="amount">$24.000</p>
+        </div>
+        <div class="price-block">
+          <p class="label">Al por mayor</p>
+          <p class="amount">$23.600</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category">
+    <figure>
+      <img src="img/gel-de-ducha.png" alt="Gel de ducha Alia Beauty en los aromas Candy Bum, Bubble Gum y Piña Colada">
+    </figure>
+    <div class="info">
+      <h2>Gel de ducha</h2>
+      <p class="desc">Limpieza suave para el uso diario. Disponible en Candy Bum, Bubble Gum y Piña Colada.</p>
+      <div class="prices">
+        <div class="price-block">
+          <p class="label">Unidad</p>
+          <p class="amount">$28.000</p>
+        </div>
+        <div class="price-block">
+          <p class="label">Al por mayor</p>
+          <p class="amount">$24.000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category">
+    <figure>
+      <img src="img/splash-corporal.png" alt="Splash corporal Alia Beauty en los aromas Candy Bum, Addicción y Girl Boss">
+    </figure>
+    <div class="info">
+      <h2>Splash corporal</h2>
+      <p class="desc">Fragancia ligera para refrescar la piel. Disponible en Candy Bum, Addicción y Girl Boss.</p>
+      <div class="prices">
+        <div class="price-block">
+          <p class="label">Unidad</p>
+          <p class="amount">$26.000</p>
+        </div>
+        <div class="price-block">
+          <p class="label">Al por mayor</p>
+          <p class="amount">$23.200</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="combo">
+    <figure>
+      <img src="img/combo-candy-bum.png" alt="Combo Candy Bum: splash, gel de ducha y mantequilla corporal">
+    </figure>
+    <div>
+      <p class="eyebrow">Combo</p>
+      <h2>Combo de los tres productos</h2>
+      <p class="desc">Splash corporal, gel de ducha y mantequilla corporal en un mismo aroma.</p>
+      <div class="prices">
+        <div class="price-block">
+          <p class="label">Unidad</p>
+          <p class="amount">$72.000</p>
+        </div>
+        <div class="price-block">
+          <p class="label">Al por mayor</p>
+          <p class="amount">$70.000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <h3>Alia Beauty SAS</h3>
+      <p>Comercio de productos cosméticos para el cuidado de la piel.</p>
+    </div>
+    <div>
+      <h3>Contacto</h3>
+      <address>
+        <p>aliabeauty70@gmail.com</p>
+        <p>47A sur 31-86, Bogotá D.C.</p>
+      </address>
+    </div>
+    <div>
+      <h3>Horario de atención</h3>
+      <p>Lunes a Viernes</p>
+      <p>8:00 a.m. – 6:00 p.m.</p>
+    </div>
+  </footer>
+
+  <p class="footer-base">© 2026 Alia Beauty SAS. Proyecto académico.</p>
+
+</body>
+</html>
