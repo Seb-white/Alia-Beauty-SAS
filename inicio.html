@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio — Alia Beauty SAS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F5F6;
+    --ink: #000D49;
+    --ink-soft: #4A618D;
+    --wine: #4A618D;
+    --sage: #7F92B3;
+    --nude: #BCC0CF;
+    --line: #BCC0CF;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Karla', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .wordmark{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width: 100%; }
+
+  /* ---------- Header ---------- */
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 1.6rem clamp(1.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .wordmark{
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .wordmark span{ color: var(--wine); }
+
+  nav{
+    display:flex;
+    gap: clamp(1rem, 3vw, 2.4rem);
+  }
+
+  nav a{
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color .2s ease;
+  }
+
+  nav a:hover, nav a:focus-visible{ color: var(--wine); }
+
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0;
+    height:1px;
+    background: var(--wine);
+    transition: width .25s ease;
+  }
+
+  nav a:hover::after, nav a:focus-visible::after{ width:100%; }
+
+  nav a.active{ color: var(--ink); }
+
+  nav a.active::after{ width:100%; background: var(--ink); }
+
+  /* ---------- Hero ---------- */
+
+  .hero{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items:center;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero p.eyebrow{
+    color: var(--sage);
+    font-size: 0.85rem;
+    margin: 0 0 0.9rem;
+  }
+
+  .hero h1{
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.08;
+    max-width: 11ch;
+  }
+
+  .hero .lede{
+    margin-top: 1.4rem;
+    max-width: 42ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .hero .cta-row{
+    display:flex;
+    gap: 1rem;
+    margin-top: 2.2rem;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display:inline-block;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    transition: transform .2s ease, background .2s ease, color .2s ease;
+  }
+
+  .btn-primary{
+    background: var(--wine);
+    color: #fff;
+  }
+
+  .btn-primary:hover{ background: #000D49; transform: translateY(-1px); }
+
+  .btn-ghost{
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .btn-ghost:hover{ border-color: var(--wine); color: var(--wine); }
+
+  /* ---------- Hero visual: drop shape, no images ---------- */
+
+  .visual{
+    position: relative;
+    height: 340px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .drop{
+    width: 220px;
+    height: 220px;
+    border-radius: 50% 50% 50% 4%;
+    background: linear-gradient(155deg, var(--nude), var(--wine) 130%);
+    transform: rotate(-8deg);
+    box-shadow: 0 30px 60px -20px rgba(74,97,141,0.4);
+  }
+
+  .drop-small{
+    position:absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50% 50% 50% 4%;
+    background: var(--sage);
+    top: 14%;
+    right: 8%;
+    transform: rotate(20deg);
+    opacity: 0.9;
+  }
+
+  /* ---------- Franja de productos ---------- */
+
+  .products{
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(2.4rem, 6vw, 3.6rem) clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .products-inner{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .products h2{
+    font-size: 1.6rem;
+    max-width: 20ch;
+  }
+
+  .product-list{
+    margin-top: 2rem;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .product-list li{
+    list-style:none;
+    padding: 1.6rem 1.6rem 1.6rem 0;
+    border-left: 1px solid var(--line);
+    padding-left: 1.6rem;
+  }
+
+  .product-list li:first-child{ border-left: none; padding-left: 0; }
+
+  .product-list .num{
+    font-family: 'Fraunces', serif;
+    color: var(--sage);
+    font-size: 0.95rem;
+  }
+
+  .product-list h3{
+    margin-top: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  .product-list p{
+    margin: 0.5rem 0 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    padding: clamp(2.4rem, 6vw, 3.6rem) clamp(1.5rem, 5vw, 4rem) 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  footer h3{
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  footer p, footer address{
+    font-style: normal;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin: 0.25rem 0;
+  }
+
+  .footer-base{
+    text-align:center;
+    padding: 1.2rem 1.5rem 2rem;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 780px){
+    .hero{ grid-template-columns: 1fr; }
+    .visual{ order:-1; height: 220px; }
+    .product-list{ grid-template-columns: 1fr; }
+    .product-list li{ border-left:none; padding-left:0; border-top: 1px solid var(--line); }
+    .product-list li:first-child{ border-top:none; }
+    footer{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="wordmark">alia<span>.</span>beauty</a>
+    <nav>
+      <a href="inicio.html" class="active">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Cuidado de la piel</p>
+      <h1>Rituales simples para el cuidado diario de tu piel</h1>
+      <p class="lede">Alia Beauty acompaña tu piel con gel de baño, body splash y mantequilla corporal, pensados para quedarse en tu rutina de todos los días.</p>
+      <div class="cta-row">
+        <a href="catalogo.html" class="btn btn-primary">Ver catálogo</a>
+        <a href="nosotros.html" class="btn btn-ghost">Conócenos</a>
+      </div>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="drop"></div>
+      <div class="drop-small"></div>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="products-inner">
+      <h2>Lo que encuentras en Alia Beauty</h2>
+      <ul class="product-list">
+        <li>
+          <span class="num">01</span>
+          <h3>Gel de baño</h3>
+          <p>Limpieza suave para el uso diario, formulado para respetar la piel.</p>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <h3>Body splash</h3>
+          <p>Fragancia ligera para refrescar la piel después del baño.</p>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <h3>Mantequilla corporal</h3>
+          <p>Hidratación profunda para dejar la piel suave y nutrida.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <h3>Alia Beauty SAS</h3>
+      <p>Comercio de productos cosméticos para el cuidado de la piel.</p>
+    </div>
+    <div>
+      <h3>Contacto</h3>
+      <address>
+        <p>aliabeauty70@gmail.com</p>
+        <p>47A sur 31-86, Bogotá D.C.</p>
+      </address>
+    </div>
+    <div>
+      <h3>Horario de atención</h3>
+      <p>Lunes a Viernes</p>
+      <p>8:00 a.m. – 6:00 p.m.</p>
+    </div>
+  </footer>
+
+  <p class="footer-base">© 2026 Alia Beauty SAS. Proyecto académico.</p>
+
+</body>
+</html>
